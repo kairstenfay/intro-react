@@ -151,5 +151,29 @@ const reactElement = (
 ```
 
 With `reactElement`, we created what's called a [React element](https://reactjs.org/docs/rendering-elements.html).
-React elements are teh smallest building blocks of React apps.
+React elements are the smallest building blocks of React apps.
 They describe what you wnat to see on the screen.
+
+React elements make up [React components](https://reactjs.org/docs/react-component.html).
+We'll get more into those in a bit.
+For now, let's import an existing component called `FaPlus`.
+Add the following line to the top of your `src/index.js` file:
+```js
+import { FaPlus } from "react-icons/fa"
+```
+
+Now, replace the "+" in your `reactElement` with the `FaPlus` component, like so:
+```jsx
+const reactElement = (
+  <button>
+    <FaPlus /> {getTitle()}
+  </button>
+)
+```
+Make sure to close the `FaPlus` component with `/>`, or the app will fail to load!
+
+The change in the view may seem subtle, but what we've just done is no small thing! We
+1. imported an existing React component from a React library, and
+2. rendered it within our `reactElement`.
+
+The ability to mix and match elements and components is what makes React composable! 🎉
