@@ -1,12 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react"
+import ReactDOM from "react-dom"
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// All React needs to render is a dom element, and a react element
+const reactElement = <div>Hello, React!</div>
+const domElement = document.getElementById("root")
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// and away we go!
+ReactDOM.render(reactElement, domElement)
