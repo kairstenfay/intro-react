@@ -1,68 +1,76 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Intro to React Workshop
+Many thanks to ReactTraining's [hooks-workshop](https://github.com/ReactTraining/hooks-workshop) repo.
+Much of this tutorial is borrowed directly from their work.
 
-## Available Scripts
 
-In the project directory, you can run:
+## What is React?
+React, also known as React.js, is [a JavaScript library for building user interfaces](https://reactjs.org/).
 
-### `npm start`
+It is the front-end framework that powers Auspice and Nextstrain.org.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+React, created by Facebook, rose to popularity for its pleasant developer experience.
+React views are declarative and composable.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## What is the DOM?
+The Document Object Model, or DOM, is a
+> language-independent interface that treats an HTML document as a tree structure wherein each node is an object representing a part of the document. ([Wikipedia](https://en.wikipedia.org/wiki/Document_Object_Model))
 
-### `npm test`
+Let's see the DOM in action.
+Go to https://github.com and open up the developer tools by right-clicking and selecting "Inspect Element".
+Find this node near the top of the tree:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```html
+<div class="application-main " data-commit-hovercards-enabled="">
+```
 
-### `npm run build`
+Now find the node nested under this one that begins with:
+```html
+<div class="d-flex flex-wrap bg-gray" style="min-height: 100vh;">
+```
+Expand the node by clicking on the arrow on the left-hand side of the `<div` tag opening. Now the nested nodes are visible. Mouseover them to see their corresponding UI elements on the web page.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+DOM elements, or nodes, like these are what we will be manipulating with React.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Getting started with React
+Let's see React in action.
+Make sure you've cloned [this git repo](https://github.com/kairstenfay/intro-react):
+```sh
+git clone git@github.com:kairstenfay/intro-react.git
+```
 
-### `npm run eject`
+Now, change into your newly cloned repo and install the required dependencies:
+```sh
+cd intro-react
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Once your dependencies are done installing, fire up the React app wih:
+```sh
+npm run start
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In your browser, at `localhost:3000`, you should now see a mostly empty view with a tiny message saying "Hello, React!"
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+If we open the file at `src/index.js`, we can see that our app consists of only a few lines of code:
+```jsx
+import React from "react"
+import ReactDOM from "react-dom"
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+// All React needs to render is a dom element, and a react element
+const reactElement = <div>Hello, React!</div>
+const domElement = document.getElementById("root")
 
-## Learn More
+// and away we go!
+ReactDOM.render(reactElement, domElement)
+```
+The HTML-looking syntax, similar to what you saw in the DOM, in JavaScript is called JSX.
+It’s special to React.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Inside of the `<div>` tag, edit "Hello, React!" to greet you by name.
+The React server detects the change in `src/index.js` and reloads the browser accordingly.
+Neat!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Now, if you open up your developer tools (right-click, "Inspect Element"), you can see under the `<body>` node, a DOM element that starts with `<div id="root">`.
+This is the DOM element we told React to modify in our code.
+We targeted it by referring to its ID, "root". 
