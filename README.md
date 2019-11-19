@@ -9,7 +9,7 @@ React, also known as React.js, is [a JavaScript library for building user interf
 It is the front-end framework that powers Auspice and Nextstrain.org.
 
 React, created by Facebook, rose to popularity for its pleasant developer experience.
-React views are declarative and composable.
+React views, also called User Interfaces or UIs, are declarative and composable.
 
 ## What is the DOM?
 The Document Object Model, or DOM, is a
@@ -65,7 +65,7 @@ const domElement = document.getElementById("root")
 ReactDOM.render(reactElement, domElement)
 ```
 The HTML-looking syntax, similar to what you saw in the DOM, in JavaScript is called JSX.
-It’s special to React.
+It’s special to React, and we'll discuss it again in a bit.
 
 Inside of the `<div>` tag, edit "Hello, React!" to greet you by name.
 The React server detects the change in `src/index.js` and reloads the browser accordingly.
