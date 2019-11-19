@@ -73,4 +73,83 @@ Neat!
 
 Now, if you open up your developer tools (right-click, "Inspect Element"), you can see under the `<body>` node, a DOM element that starts with `<div id="root">`.
 This is the DOM element we told React to modify in our code.
-We targeted it by referring to its ID, "root". 
+We targeted it by referring to its ID, "root".
+
+Let's modify our UI again, this time replacing the declaration of `reactElement` with the following code:
+```jsx
+const reactElement = (
+  <button>
+    + Add
+  </button>
+)
+```
+
+In your browser, you can now see a button that says "+ Add."
+
+We mentioned that React is composable, so let's make the code a little more reusable.
+Declare a JavaScript function that returns the text, "Add".
+```js
+const getTitle = () => "Add"
+```
+
+Now, invoke your new function, `getTitle()`, within the `reactElement` declaration.
+Altogether, it looks like:
+```jsx
+const getTitle = () => "Add"
+
+const reactElement = (
+  <button>
+    + {getTitle()}
+  </button>
+)
+```
+
+You should see no change in the view.
+
+## What is JSX?
+JSX is [a syntax extension to JavaScript](https://reactjs.org/docs/introducing-jsx.html).
+We use it when defining React components to tell React what the UI should look like.
+JSX is similar to a template language, but with the full power of JavaScript.
+
+You can escape JSX and write JavaScript with curly brackets `{}`.
+In the most recent example, we "escaped" the HTML-looking JSX to invoke pure JavaScript after the "+" sign.
+```jsx
+const reactElement = (
+  <button>
+    + {getTitle()}
+  </button>
+)
+```
+When we close the curly bracket, we return to JSX syntax.
+To further illustrate this point, let us temporarily replace the code inside the curly brackets with an equation like this one:
+```jsx
+const reactElement = (
+  <button>
+    + {333 + 9 / 4}
+  </button>
+)  // 335.25!
+```
+
+Notice that you only see the result of the calculation.
+If you remove the curly brackets, however, React renders the numbers as normal HTML text contained within JSX.
+```jsx
+const reactElement = (
+  <button>
+    + 333 + 9 / 4
+  </button>
+)  // No math, only sadness
+```
+
+## React elements
+Let's reset our `reactElement` variable in `src/index.js` to the following code:
+```jsx
+const reactElement = (
+  <button>
+    + {getTitle()}
+  </button>
+)
+```
+
+With `reactElement`, we created what's called a [React element](https://reactjs.org/docs/rendering-elements.html).
+React elements are teh smallest building blocks of React apps.
+They describe what you wnat to see on the screen.
