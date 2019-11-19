@@ -177,3 +177,51 @@ The change in the view may seem subtle, but what we've just done is no small thi
 2. rendered it within our `reactElement`.
 
 The ability to mix and match elements and components is what makes React composable! 🎉
+
+
+## React components
+Let's turn our button into a React component and remove some stuff.
+
+Delete `getTitle` and `reactElement`, replacing both of them with the following component:
+```jsx
+const Button = () => (
+  <button>
+    <FaPlus />
+    Add
+  </button>
+)
+```
+In the final line that starts with `ReactDOM.render`, replace `reactElement` with `<Button />`, once again remembering to close the component with `/>`.
+You should see no difference in the UI.
+
+One of the great benefits of using components is that they're resuable.
+Right now, this button always renders the same stuff inside.
+But, if we use props that get passed in, we can use it in multiple contexts.
+
+Edit your declaration of `Button` to look like this:
+```jsx
+const Button = (props) => {
+    return (
+      <button>
+        {props.children}
+      </button>
+    )
+  }
+```
+
+Add a second React component, `App`, defined as:
+```jsx
+const App = () => (
+  <div>
+    <Button>
+      <FaPlus /> Add
+    </Button>
+    <Button>
+      <FaMinus /> Subtract
+    </Button>
+  </div>
+)
+```
+
+Finally, update the `ReactDOM.render` method to call `<App />` instead of `<Button />`.
+Compare your final version of `src/index.js` with `src/final.index.js`. 
