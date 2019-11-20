@@ -209,7 +209,7 @@ You should see no difference in the UI.
 
 One of the great benefits of using components is that they're resuable.
 Right now, this button always renders the same stuff inside.
-But, if we use props that get passed in, we can use it in multiple contexts.
+But, if we use "props", or arbitrary inputs that get passed in, we can use it in multiple contexts.
 
 Edit your declaration of `Button` to look like this:
 ```jsx
