@@ -209,6 +209,11 @@ const Button = (props) => {
   }
 ```
 
+Import `FaMinus` in the same way you imported `FaPlus`, with:
+```js
+import { FaPlus, FaMinus } from "react-icons/fa"
+```
+
 Add a second React component, `App`, defined as:
 ```jsx
 const App = () => (
