@@ -2,8 +2,21 @@
 Many thanks to ReactTraining's [hooks-workshop](https://github.com/ReactTraining/hooks-workshop) repo.
 Much of this tutorial is borrowed directly from their work.
 
+## Table of Contents
+- [Intro to React Workshop](#intro-to-react-workshop)
+  - [Table of Contents](#table-of-contents)
+  - [Part 1](#part-1)
+    - [What is React?](#what-is-react)
+    - [What is the DOM?](#what-is-the-dom)
+    - [Getting started with React](#getting-started-with-react)
+    - [What is JSX?](#what-is-jsx)
+    - [React elements](#react-elements)
+    - [React components](#react-components)
+  - [Part 2](#part-2)
 
-## What is React?
+
+## Part 1
+### What is React?
 React, also known as React.js, is [a JavaScript library for building user interfaces](https://reactjs.org/).
 
 It is the front-end framework that powers Auspice and Nextstrain.org.
@@ -11,7 +24,7 @@ It is the front-end framework that powers Auspice and Nextstrain.org.
 React, created by Facebook, rose to popularity for its pleasant developer experience.
 React views, also called User Interfaces or UIs, are declarative and composable.
 
-## What is the DOM?
+### What is the DOM?
 The Document Object Model, or DOM, is a
 > language-independent interface that treats an HTML document as a tree structure wherein each node is an object representing a part of the document. ([Wikipedia](https://en.wikipedia.org/wiki/Document_Object_Model))
 
@@ -32,7 +45,7 @@ Expand the node by clicking on the arrow on the left-hand side of the `<div` tag
 DOM elements, or nodes, like these are what we will be manipulating with React.
 
 
-## Getting started with React
+### Getting started with React
 Let's see React in action.
 Make sure you've cloned [this git repo](https://github.com/kairstenfay/intro-react):
 ```sh
@@ -106,7 +119,7 @@ const reactElement = (
 
 You should see no change in the view.
 
-## What is JSX?
+### What is JSX?
 JSX is [a syntax extension to JavaScript](https://reactjs.org/docs/introducing-jsx.html).
 We use it when defining React components to tell React what the UI should look like.
 JSX is similar to a template language, but with the full power of JavaScript.
@@ -140,7 +153,7 @@ const reactElement = (
 )  // No math, only sadness
 ```
 
-## React elements
+### React elements
 Let's reset our `reactElement` variable in `src/index.js` to the following code:
 ```jsx
 const reactElement = (
@@ -179,7 +192,7 @@ The change in the view may seem subtle, but what we've just done is no small thi
 The ability to mix and match elements and components is what makes React composable! 🎉
 
 
-## React components
+### React components
 Let's turn our button into a React component and remove some stuff.
 
 Delete `getTitle` and `reactElement`, replacing both of them with the following component:
@@ -230,3 +243,6 @@ const App = () => (
 
 Finally, update the `ReactDOM.render` method to call `<App />` instead of `<Button />`.
 Compare your final version of `src/index.js` with `final-examples/part1-final.index.js`.
+
+
+## Part 2
