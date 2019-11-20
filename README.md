@@ -1,6 +1,7 @@
 # Intro to React Workshop
 Many thanks to ReactTraining's [hooks-workshop](https://github.com/ReactTraining/hooks-workshop) repo.
 Much of this tutorial is borrowed directly from their work.
+I've also quoted liberally from [the ReactJS website](https://reactjs.org).
 
 ## Table of Contents
 - [Intro to React Workshop](#intro-to-react-workshop)
