@@ -14,6 +14,7 @@ I've also quoted liberally from [the ReactJS website](https://reactjs.org).
     - [React elements](#react-elements)
     - [React components](#react-components)
   - [Part 2](#part-2)
+    - [React state](#react-state)
 
 
 ## Part 1
@@ -247,3 +248,39 @@ Compare your final version of `src/index.js` with `final-examples/part1-final.in
 
 
 ## Part 2
+Let's revisit a modified version of the final code from Part 1.
+Replace the contents of `src/index.js` with the code from `initial-examples/part2-initial.index.js`.
+
+So far, we have only learned one way to update the UI.
+We called `ReactDOM.render()` to change the rendered output.
+Next, we're going to modify our React app so that the view uses state instead of a hard-coded value for minutes.
+
+### React state
+In your newly refreshed `src/index.js` file, replace the declaration of `minutes` with:
+```js
+const [minutes, setMinutes] = useState(5)
+```
+
+`useState()` is a [React hook](https://reactjs.org/docs/hooks-intro.html).
+Hooks are a new addition in React 16.8.
+They let you use state and other React features without writing a class.
+From the ReactJS website:
+> We call it inside a function component to add some local state to it.
+> React will preserve this state between re-renders.
+> `useState` returns a pair: the current state value and a function that lets you update it.
+
+
+To illustrate this concept, let's put our add and subtract buttons to work!
+Modify the add and subtract `<button>` elements to pass them an `onClick` handler equal to the following, respectively:
+```jsx
+<button onClick={() => setMinutes(minutes + 1)}>
+    <FaPlus />
+</button>
+```
+
+```jsx
+<button onClick={() => setMinutes(minutes - 1)}>
+    <FaMinus />
+</button>
+```
+Now, when we click the add or subtract buttons, React re-renders our `App` component while preserving state!
