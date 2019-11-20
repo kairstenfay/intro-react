@@ -15,6 +15,8 @@ I've also quoted liberally from [the ReactJS website](https://reactjs.org).
     - [React components](#react-components)
   - [Part 2](#part-2)
     - [React state](#react-state)
+  - [Part 3](#part-3)
+    - [Changing state](#changing-state)
 
 
 ## Part 1
@@ -284,5 +286,146 @@ Modify the subtract and add `<button>` elements to pass them an `onClick` handle
 </button>
 ```
 Now, when we click the add or subtract buttons, React re-renders our `App` component while preserving state!
+We can see the updating in our browser dev tools.
+If you expand the node that begins with `<div id="root">`, you can see the text within the DOM element update as we click our plus or minus buttons.
 
 Let's refactor our code to pass a named function to the `button`'s `onClick` attribute.
+
+Rewrite the `App` component to look like:
+```jsx
+const App = () => {
+    const [minutes, setMinutes] = useState(5)
+
+    const handleSubtract = () => setMinutes(minutes - 1)
+    const handleAdd = () => setMinutes(minutes + 1)
+
+    return (
+        <div>
+            <div id="Minutes">
+                <button onClick={handleSubtract}>
+                    <FaMinus />
+                </button>
+                {minutes} Minutes
+                <button onClick={handleAdd}>
+                    <FaPlus />
+                </button>
+            </div>
+        </div>
+    )
+}
+```
+
+You can use the state hook multiple times within one component.
+Add the following lines to `App`, before the `return()` statement.
+```jsx
+const [counter, setCounter] = useState(0)
+```
+
+Within `return(`, add another `<div>` tag after after the one for `id="Minutes"`.
+
+```jsx
+<div id="Counter">
+    <button onClick={() => setCounter(counter + 1)}>
+        You've clicked this button {counter} times!
+    </button>
+</div>
+```
+
+With a bit of refactoring, we can utilize React's composability to create clean, readable, and reusable code.
+Try your hand at breaking down the Minutes and Counter functionality into two, separate React components.
+When you're done, compare with `final-examples/part2-final.index.js`.
+
+
+## Part 3
+Let's pick up with where we left off at the end of Part 2.
+Feel free to refresh your `src/index.js` with the content from `final-examples/part2-final.index.js`.
+
+### Changing state
+We can decide when to change state and when not to.
+Maybe we only want values 1 through 9 for minutes.
+We can modify the `handleSubtrafct` and `handleAdd` functions with our desired logic.
+
+```jsx
+const handleSubtract = () => {
+    if (minutes > 1) {
+        setMinutes(minutes - 1)
+    }
+}
+
+const handleAdd = () => {
+    if (minutes < 9) {
+        setMinutes(minutes + 1)
+    }
+}
+```
+
+Now, state only updates when `minutes` is within our desired range.
+Therefore, React does not detect a change in state and does not re-render.
+
+
+We can add multiple states, like an error state when a user tries to enter an invalid value.
+
+
+```jsx
+const handleSubtract = () => {
+    if (minutes > 1) {
+        setMinutes(minutes - 1)
+        setError(null)
+    } else {
+        setError("Greater than 0 please.")
+    }
+}
+
+const handleAdd = () => {
+    if (minutes < 9) {
+        setMinutes(minutes + 1)
+        setError(null)
+    } else {
+        setError("Less than 10 please.")
+    }
+}
+```
+
+To make our error visible, we must add an additional JSX element to our `return` statement.
+Add the following code after the final `</button>` closing tag, but before the final `</div>` closing tag:
+```jsx
+<div id="Error">
+    { error }
+</div>
+```
+
+Now, when the user tries to enter an invalid number of minutes, they see our error message.
+
+Instead of always showing the error, even when it's `null`, we can optionally render the error based in its state value.
+We can do this using JSX and JavaScript's `&&` operator, which we will use similarly to an `if` statement:
+```jsx
+<div id="Error">
+    { error && (
+        { error }
+    )}
+</div>
+```
+
+How does this work?
+Remember, the curly brackets allow us to escape JSX to enter JavaScript mode.
+When we hit the part of the code that says `{ error && (`, JavaScript is evaluating the "truthiness" of `error`.
+If `error` evaluates to `true`, e.g. it isn't `null`, then JavaScript will proceed in evaluating the rest of the statement.
+
+We then give JavaScript a JSX element wrapped within parentheses.
+This is similar to what we did when making our first `reactElement`.
+
+Multiple elements can change the same state.
+Here, we can close the error message by clicking a button inside it.
+
+```jsx
+<div id="Error">
+    { error && (
+        <p>
+            { error }<br />
+            <button onClick={() => setError(null)}>
+                dismiss
+            </button>
+        </p>
+    )}
+</div>
+```
