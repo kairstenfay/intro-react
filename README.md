@@ -234,10 +234,10 @@ Add a second React component, `App`, defined as:
 const App = () => (
   <div>
     <Button>
-      <FaPlus /> Add
+      <FaMinus /> Subtract
     </Button>
     <Button>
-      <FaMinus /> Subtract
+      <FaPlus /> Add
     </Button>
   </div>
 )
@@ -271,16 +271,18 @@ From the ReactJS website:
 
 
 To illustrate this concept, let's put our add and subtract buttons to work!
-Modify the add and subtract `<button>` elements to pass them an `onClick` handler equal to the following, respectively:
-```jsx
-<button onClick={() => setMinutes(minutes + 1)}>
-    <FaPlus />
-</button>
-```
-
+Modify the subtract and add `<button>` elements to pass them an `onClick` handler equal to the following, respectively:
 ```jsx
 <button onClick={() => setMinutes(minutes - 1)}>
     <FaMinus />
 </button>
 ```
+
+```jsx
+<button onClick={() => setMinutes(minutes + 1)}>
+    <FaPlus />
+</button>
+```
 Now, when we click the add or subtract buttons, React re-renders our `App` component while preserving state!
+
+Let's refactor our code to pass a named function to the `button`'s `onClick` attribute.

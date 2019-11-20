@@ -14,10 +14,10 @@ const Button = (props) => {
 const App = () => (
   <div>
     <Button>
-      <FaPlus /> Add
+      <FaMinus /> Subtract
     </Button>
     <Button>
-      <FaMinus /> Subtract
+      <FaPlus /> Add
     </Button>
   </div>
 )
