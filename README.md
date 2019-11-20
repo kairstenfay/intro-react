@@ -229,4 +229,4 @@ const App = () => (
 ```
 
 Finally, update the `ReactDOM.render` method to call `<App />` instead of `<Button />`.
-Compare your final version of `src/index.js` with `src/final.index.js`. 
+Compare your final version of `src/index.js` with `final-examples/part1-final.index.js`.
