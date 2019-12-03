@@ -33,7 +33,7 @@ node -v
     - [Changing state](#changing-state)
 
 
-## Part 1
+## Part 1: Intro
 ### What is React?
 React, also known as React.js, is [a JavaScript library for building user interfaces](https://reactjs.org/).
 
@@ -263,7 +263,7 @@ Finally, update the `ReactDOM.render` method to call `<App />` instead of `<Butt
 Compare your final version of `src/index.js` with `final-examples/part1-final.index.js`.
 
 
-## Part 2
+## Part 2: State
 Let's revisit a modified version of the final code from Part 1.
 Replace the contents of `src/index.js` with the code from `initial-examples/part2-initial.index.js`.
 
@@ -350,7 +350,7 @@ Try your hand at breaking down the Minutes and Counter functionality into two, s
 When you're done, compare with `final-examples/part2-final.index.js`.
 
 
-## Part 3
+## Part 3: Multiple states
 Let's pick up with where we left off at the end of Part 2.
 Feel free to refresh your `src/index.js` with the content from `final-examples/part2-final.index.js`.
 
@@ -443,3 +443,72 @@ Here, we can close the error message by clicking a button inside it.
     )}
 </div>
 ```
+
+
+## Part 4: Controlled components
+Replace your code in `src/index.js` with code from `initial-examples/part4-initial.index.js`.
+
+We have a counter again, but this time the value of the counter is contained within a HTML input field.
+The buttons are no longer functional, but the default value of `0` is editable within the input field.
+Here, the user, not the programmer, is in control of the input.
+
+Now, change the `<input>` element to take a `value={minutes}` instead of a `defaultValue={minutes}`.
+The user can no longer edit the value contained within the input field.
+Why?
+This highlights React's declarative nature.
+We told React to render a minutes value equal to 30, it listened.
+
+As programmers, we can add `onClick` handlers like we did before to control the value in the input field.
+
+Add the following functions to the `Minutes` component of `src/index.js`:
+```jsx
+  const handleSubtract = () => {
+      if (minutes > 0) {
+          setMinutes(minutes - 1)
+      }
+  }
+
+  const handleAdd = () => {
+      setMinutes(minutes + 1)
+  }
+```
+
+Next, provide each `<button>` with its suitable `onClick` function. For the subtract button:
+```jsx
+<button onClick={handleSubtract}>
+    <FaMinus />
+</button>
+```
+
+And for the add button:
+```jsx
+<button onClick={handleAdd}>
+    <FaPlus />
+</button>
+```
+
+Our add and subtract buttons are now functional!
+However, if you open your browser dev tools, you'll see an error in the console:
+
+> Warning: Failed prop type: You provided a `value`  prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
+
+We programmers are still completely in control of the input field.
+We need to bring in `onChange` to allow the user's interactions to control the input.
+Technically, it is still the programmer controlling the input.
+Let's take a look at the implementation.
+
+Add the following function to the `Minutes` component:
+```jsx
+const handleInputChange = event => {
+  setMinutes(event.target.value)
+}
+```
+
+Now, incorporate it in the `<input>` element by rewriting it to mimic this:
+```jsx
+<input value={minutes} id="minutes"
+    onChange={handleInputChange} />
+```
+
+Our user can now update the minutes counter using the buttons or the input field, both of which we control.
+
