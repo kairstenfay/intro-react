@@ -3,6 +3,20 @@ Many thanks to ReactTraining's [hooks-workshop](https://github.com/ReactTraining
 Much of this tutorial is borrowed directly from their work.
 I've also quoted liberally from [the ReactJS website](https://reactjs.org).
 
+## What you will get
+A stripped-down, quick start intro to the React.js front-end framework that requires little to no previous knowledge of web development or JavaScript.
+
+## What you won't get
+Unfortunately, we won't discuss styling React components.
+We also won't get into best accessibility practices.
+
+## Installation requirements
+Node version 10 or higher is required for this tutorial.
+To check your current version of node, run:
+```sh
+node -v
+```
+
 ## Table of Contents
 - [Intro to React Workshop](#intro-to-react-workshop)
   - [Table of Contents](#table-of-contents)
