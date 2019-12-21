@@ -502,7 +502,7 @@ Let's take a look at the implementation.
 Add the following function to the `Minutes` component:
 ```jsx
 const handleInputChange = event => {
-  setMinutes(event.target.value)
+  setMinutes(parseInt(event.target.value))
 }
 ```
 
