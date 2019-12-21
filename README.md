@@ -417,7 +417,9 @@ We can do this using JSX and JavaScript's `&&` operator, which we will use simil
 ```jsx
 <div id="Error">
     { error && (
+      <p>
         { error }
+      </p>
     )}
 </div>
 ```
