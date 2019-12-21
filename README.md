@@ -381,6 +381,8 @@ We can add multiple states, like an error state when a user tries to enter an in
 
 
 ```jsx
+const [error, setError] = useState(null)
+
 const handleSubtract = () => {
     if (minutes > 1) {
         setMinutes(minutes - 1)
@@ -403,8 +405,6 @@ const handleAdd = () => {
 To make our error visible, we must add an additional JSX element to our `return` statement.
 Add the following code after the final `</button>` closing tag, but before the final `</div>` closing tag:
 ```jsx
-const [error, setError] = useState(null)
-
 <div id="Error">
     { error }
 </div>
